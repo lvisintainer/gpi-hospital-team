@@ -1,30 +1,98 @@
-.pz-list{
+.toolbar {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1rem 0;
+  gap: 1rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #0066cc;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #004f9e;
+    }
+  }
 }
 
-.pz-card{
-  margin: 10px;
-  width: 250px;
-  max-height: 350px;
-  padding: 10px;
-
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.pz_card__info{
+.pz-list {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.pz_card__action{
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.pz-card {
+  width: 260px;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .pz-meta {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pz-status {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #ddd;
+
+    &.stato {
+      background-color: #e0e0e0;
+    }
+
+    &.colore-bianco { background: #fff; border: 1px solid #ccc; }
+    &.colore-verde { background: #c8e6c9; color: #2e7d32; }
+    &.colore-azzurro { background: #bbdefb; color: #0d47a1; }
+    &.colore-arancione { background: #ffe0b2; color: #ef6c00; }
+    &.colore-rosso { background: #ffcdd2; color: #b71c1c; }
+  }
+
+  .pz_card__action {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+
+    button {
+      flex: 1;
+      padding: 0.4rem;
+      font-size: 0.85rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #eee;
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+}
+
+.no-results {
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  color: #666;
 }

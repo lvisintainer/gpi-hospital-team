@@ -1,14 +1,25 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AFPHospitalAPIService } from '../../core/services/afphospital-api.service';
-import {DatePipe} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-lista-pz',
-  imports: [DatePipe, RouterLink],
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './lista-pz.component.html',
   styleUrl: './lista-pz.component.scss'
 })
-export class ListaPzComponent {
-  api = inject(AFPHospitalAPIService);
+export class ListaPzComponent implements OnInit {
+  constructor(public api: AFPHospitalAPIService) {}
+
+ngOnInit(): void {
+  this.api.getListaPazienti();
+}
+
+
+  trackById(index: number, item: { id_paziente: number }): number {
+  return item.id_paziente;
+}
+
 }

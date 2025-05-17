@@ -1,36 +1,27 @@
-export interface Paziente{
-  id_paziente: number,
-  codice: string,
-  codice_colore: CodiceColore,
-  stato: StatoPZ,
-  id_reparto: number,
-  nome_reparto: string,
-  descrizione: string,
-  id_anagrafica: number,
-  nome: string,
-  cognome: string,
-  data_nascita: Date,
-  codice_fiscale: string,
-};
-
-export interface CreazionePaziente{
-  nome: string,
-  cognome: string,
-  dataNascita: Date,
-  codiceFiscale: string,
-  codice: string,
-  codiceColore: CodiceColore,
-  stato: StatoPZ
+export interface Paziente {
+  id_paziente: number;
+  codice: string;
+  codice_colore: CodiceColore;
+  stato: StatoPZ;
+  id_reparto: number;
+  nome_reparto: string;
+  descrizione: string;
+  id_anagrafica: number;
+  nome: string;
+  cognome: string;
+  data_nascita: Date;
+  codice_fiscale: string;
 }
 
-export type CodiceColore = 'BIANCO' |
-'VERDE' |
-'AZZURRO' |
-'ARANCIONE' |
-'ROSSO' |
-'NON FORNITO';
+export interface CreazionePaziente {
+  codice: string;
+  codiceColore: CodiceColore;
+  cognome: string;
+  dataNascita: Date;
+  nome: string;
+  codiceFiscale: string;
+  stato: StatoPZ;
+}
 
-export type StatoPZ = 'IN CARICO' |
-'TRASFERITO' |
-'DIMESSO' |
-'NON FORNITO';
+export type CodiceColore = 'NON FORNITO' | 'BIANCO' | 'VERDE' | 'AZZURRO' | 'ARANCIONE' | 'ROSSO';
+export type StatoPZ = 'IN CARICO' | 'DIMESSO' | 'TRASFERITO';

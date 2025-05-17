@@ -1,51 +1,35 @@
+<h2>Accettazione Nuovo Paziente</h2>
+
 <div class="form">
   <label for="nome">Nome</label>
-  <input
-    type="text"
-    id="nome"
-    placeholder="Nome"
-    [(ngModel)]="nome"
-  >
+  <input id="nome" type="text" [(ngModel)]="nome" placeholder="Mario" />
 
   <label for="cognome">Cognome</label>
-  <input
-    type="text"
-    id="cognome"
-    placeholder="Cognome"
-    [(ngModel)]="cognome"
-  >
+  <input id="cognome" type="text" [(ngModel)]="cognome" placeholder="Rossi" />
 
   <label for="dataNascita">Data di nascita</label>
-  <input
-    type="date"
-    id="dataNascita"
-    placeholder="Data di nascita"
-    [(ngModel)]="dataNascita"
-  >
+  <input id="dataNascita" type="date" [(ngModel)]="dataNascita" />
 
-  <label for="codiceFiscale">Codice fiscale</label>
+  <label for="codiceFiscale">Codice Fiscale</label>
   <input
-    type="text"
     id="codiceFiscale"
-    placeholder="Codice fiscale"
+    type="text"
+    maxlength="16"
     [(ngModel)]="codiceFiscale"
-  >
-  <label for="codiceColore">Codice colore</label>
-  <select
-    id="codiceColore"
-    [(ngModel)]="codiceColore"
-  >
-    <option value="BIANCO">BIANCO</option>
-    <option value="VERDE">VERDE</option>
-    <option value="AZZURRO">AZZURRO</option>
-    <option value="ARANCIONE">ARANCIONE</option>
-    <option value="ROSSO">🔴ROSSO</option>
+    placeholder="RSSMRA80M15H501Z"
+  />
+
+  <label for="codiceColore">Codice Colore</label>
+  <select id="codiceColore" [(ngModel)]="codiceColore">
+    <option value="NON FORNITO">— Seleziona —</option>
+    <option value="BIANCO">⚪ BIANCO</option>
+    <option value="VERDE">🟢 VERDE</option>
+    <option value="AZZURRO">🔵 AZZURRO</option>
+    <option value="ARANCIONE">🟠 ARANCIONE</option>
+    <option value="ROSSO">🔴 ROSSO</option>
   </select>
 
-  <button
-    (click)="accettaPaziente()"
-    [disabled]="!validateInput()"
-  >
-    ACCETTA PAZIENTE
+  <button (click)="accettaPaziente()" [disabled]="!validateInput()">
+    ✅ Accetta Paziente
   </button>
 </div>
