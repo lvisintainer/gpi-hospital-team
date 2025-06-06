@@ -1,3 +1,18 @@
+<header class="topbar">
+  <div class="topbar__title">🏥 Ticketing Desk</div>
+
+  <div class="topbar__spacer"></div>
+
+  <nav class="topbar__nav">
+    <span class="nav-item">📋 Lista pazienti</span>
+    <span class="nav-item">👨‍⚕️ Medici</span>
+    <span class="nav-item">📊 Statistiche</span>
+    <span class="nav-item">🛏️ Reparti</span>
+    <span class="nav-item">⚙️ Impostazioni</span>
+  </nav>
+</header>
+
+
 <section class="toolbar">
   <button (click)="api.getListaPazienti()">🔄 Aggiorna lista</button>
   <button routerLink="/accetta-pz">➕ Accetta nuovo paziente</button>
@@ -6,18 +21,24 @@
 <section class="pz-list">
   <article *ngFor="let pz of api.listaPz(); trackBy: trackById" class="pz-card">
     <header>
-      <h3>{{ pz.cognome }} {{ pz.nome }}</h3>
-      <small>{{ pz.data_nascita | date: 'dd/MM/yyyy' }}</small>
+      <div class="pz-avatar">🧍</div>
+      <div class="pz-info">
+        <h3>{{ pz.cognome }} {{ pz.nome }}</h3>
+        <small>📅 {{ pz.data_nascita | date: 'dd/MM/yyyy' }}</small>
+      </div>
     </header>
+
     <div class="pz-meta">
-      <p><strong>Codice:</strong> {{ pz.codice }}</p>
-      <p><strong>CF:</strong> {{ pz.codice_fiscale }}</p>
-      <p><strong>Reparto:</strong> {{ pz.nome_reparto || '—' }}</p>
+      <p><strong>🆔 Codice:</strong> {{ pz.codice }}</p>
+      <p><strong>🧾 CF:</strong> {{ pz.codice_fiscale }}</p>
+      <p><strong>🏥 Reparto:</strong> {{ pz.nome_reparto || '—' }}</p>
     </div>
+
     <div class="pz-status">
       <span class="badge colore-{{ pz.codice_colore.toLowerCase() }}">{{ pz.codice_colore }}</span>
-      <span class="badge stato">{{ pz.stato }}</span>
+      <span class="badge stato">📌 {{ pz.stato }}</span>
     </div>
+
     <footer class="pz_card__action">
       <button (click)="api.traferisciPaziente(pz.id_paziente)">🚑 Trasferisci</button>
       <button (click)="api.dimettiPaziente(pz.id_paziente)">🏠 Dimetti</button>

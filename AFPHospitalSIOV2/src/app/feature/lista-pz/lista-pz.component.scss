@@ -1,90 +1,156 @@
-.toolbar {
+/* === HEADER / TOPBAR === */
+.topbar {
+  background: linear-gradient(to right, #0052cc, #3366ff);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.5rem;
+
   display: flex;
-  justify-content: space-between;
-  margin: 1rem 0;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 
-  button {
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    background: #0066cc;
-    color: white;
+  &__title {
+    font-size: 1.8rem;
     font-weight: bold;
-    transition: background 0.3s;
+  }
 
-    &:hover {
-      background: #004f9e;
+  &__nav {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.95rem;
+    opacity: 0.95;
+
+    .nav-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
     }
   }
 }
 
-.pz-list {
+/* === TOOLBAR === */
+.toolbar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+
+  button {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #1976d2;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: #125aa5;
+    }
+  }
+}
+
+/* === LISTA PAZIENTI === */
+.pz-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 1rem 2rem;
 }
 
 .pz-card {
-  width: 260px;
-  padding: 1rem;
-  background: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s;
+  }
 
   header {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .pz-avatar {
+      font-size: 2rem;
+      background: #e0f7fa;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pz-info h3 {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    .pz-info small {
+      color: #666;
+    }
   }
 
   .pz-meta {
     font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
   }
 
   .pz-status {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   .badge {
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: bold;
+    background-color: #ccc;
     text-transform: uppercase;
-    background-color: #ddd;
 
     &.stato {
       background-color: #e0e0e0;
     }
 
-    &.colore-bianco { background: #fff; border: 1px solid #ccc; }
-    &.colore-verde { background: #c8e6c9; color: #2e7d32; }
-    &.colore-azzurro { background: #bbdefb; color: #0d47a1; }
-    &.colore-arancione { background: #ffe0b2; color: #ef6c00; }
-    &.colore-rosso { background: #ffcdd2; color: #b71c1c; }
+    &.colore-bianco { background: #ffffff; color: #333; border: 1px solid #ccc; }
+    &.colore-verde { background: #a5d6a7; color: #2e7d32; }
+    &.colore-azzurro { background: #90caf9; color: #0d47a1; }
+    &.colore-arancione { background: #ffcc80; color: #ef6c00; }
+    &.colore-rosso { background: #ef9a9a; color: #b71c1c; }
   }
 
   .pz_card__action {
     display: flex;
-    gap: 0.5rem;
-    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: auto;
 
     button {
       flex: 1;
-      padding: 0.4rem;
+      padding: 0.5rem 0.7rem;
       font-size: 0.85rem;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
+      background-color: #f1f1f1;
       cursor: pointer;
-      background-color: #eee;
 
       &:hover {
-        background-color: #ddd;
+        background-color: #e0e0e0;
       }
     }
   }
@@ -92,7 +158,12 @@
 
 .no-results {
   text-align: center;
-  width: 100%;
-  font-weight: bold;
-  color: #666;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #888;
+  padding: 2rem;
+}
+
+.topbar__spacer {
+  height: 1rem; 
 }

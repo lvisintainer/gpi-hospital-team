@@ -1,16 +1,33 @@
-<h2>Accettazione Nuovo Paziente</h2>
+<h2 class="form-title">🏥 Accettazione Nuovo Paziente</h2>
 
 <div class="form">
-  <label for="nome">Nome</label>
+  <!-- Avatar simbolico e intestazione -->
+  <div class="form__intro">
+    <img
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsqN0eCLD44UtYBfs_NDyFe2bEBm5TB4vptAqeeYurWAS-NhF8RrCtOZsSJULTAP2EG_I&usqp=CAU"
+    alt="Avatar Paziente"
+    class="avatar"
+  />
+    <div class="form__intro-text">
+      <p class="form__status">📌 Nuovo ingresso in triage</p>
+      <p class="form__simulation">🆔 ID paziente: <span class="fake-id">PZ-{{ 'XXXXXX' }}</span></p>
+    </div>
+  </div>
+
+  <!-- Campo nome -->
+  <label for="nome">👤 Nome</label>
   <input id="nome" type="text" [(ngModel)]="nome" placeholder="Mario" />
 
-  <label for="cognome">Cognome</label>
+  <!-- Campo cognome -->
+  <label for="cognome">👤 Cognome</label>
   <input id="cognome" type="text" [(ngModel)]="cognome" placeholder="Rossi" />
 
-  <label for="dataNascita">Data di nascita</label>
+  <!-- Campo data di nascita -->
+  <label for="dataNascita">🎂 Data di nascita</label>
   <input id="dataNascita" type="date" [(ngModel)]="dataNascita" />
 
-  <label for="codiceFiscale">Codice Fiscale</label>
+  <!-- Campo codice fiscale -->
+  <label for="codiceFiscale">🧾 Codice Fiscale</label>
   <input
     id="codiceFiscale"
     type="text"
@@ -19,7 +36,8 @@
     placeholder="RSSMRA80M15H501Z"
   />
 
-  <label for="codiceColore">Codice Colore</label>
+  <!-- Codice colore -->
+  <label for="codiceColore">🎨 Codice Colore</label>
   <select id="codiceColore" [(ngModel)]="codiceColore">
     <option value="NON FORNITO">— Seleziona —</option>
     <option value="BIANCO">⚪ BIANCO</option>
@@ -29,7 +47,19 @@
     <option value="ROSSO">🔴 ROSSO</option>
   </select>
 
-  <button (click)="accettaPaziente()" [disabled]="!validateInput()">
-    ✅ Accetta Paziente
-  </button>
+  <!-- Simulazione badge -->
+  <div class="badge anteprima-codice" [ngClass]="'colore-' + codiceColore?.toLowerCase()">
+    Codice selezionato: {{ codiceColore || '—' }}
+  </div>
+
+  <!-- Simulazioni extra -->
+  <div class="form__extras">
+    <div class="extra-item">📁 Cartella clinica creata automaticamente</div>
+    <div class="extra-item">🏷️ Assegnazione a medico automatico</div>
+    <div class="extra-item">⏱️ Attesa stimata in reparto: <strong>15 min</strong></div>
+    <div class="extra-item">📡 Tracciamento RFID attivo</div>
+  </div>
+
+  <!-- Pulsante -->
+  <button (click)="accettaPaziente()" [disabled]="!validateInput()">✅ Accetta Paziente</button>
 </div>
